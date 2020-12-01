@@ -10,4 +10,8 @@ Pour faire fonctionner le projet, vous devez installer node-sass à part.
 
 ### Development server ###
 
-Démarrer `npm start` depuis le dossier `frontend` pour avoir accès au serveur de développement. Rendez-vous sur `http://localhost:4200/`. L'application va se recharger automatiquement si vous modifiez un fichier source.
+Lancer `npm start` depuis le terminal du dossier `frontend`.
+
+Lancer `nodemon server` depuis le terminal du dossier `backend`.
+
+Rendez-vous sur `http://localhost:4200/`.

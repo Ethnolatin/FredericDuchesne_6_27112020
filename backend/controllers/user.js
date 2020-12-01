@@ -4,13 +4,15 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 exports.signup = (req, res, next) => {
+  // chiffre le mot de passe de l'utilisateur
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
       const user = new User({
         email: req.body.email,
-        password: hash,
+        password: hash
       });
       console.log(user);
+      // ajoute l'utilisateur à la base de données
       user.save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé !'}))
         .catch(error => res.status(400).json({ error }));
@@ -19,16 +21,19 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
+  // vérifie l'existence de l'adresse e-mail dans la base
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé..." })
       }
+      // vérifie le mot de passe
       bcrypt.compare(req.body.password, user.password)
         .then(valid => {
           if (!valid) {
             return res.status(401).json({ error: "Mot de passe incorrect..." })
           }
+          // renvoie l'identifiant userID depuis la base de données et un jeton Web JSON signé (contenant également l'identifiant userID)
           res.status(200).json({
             userId: user._id,
             token: jwt.sign(
