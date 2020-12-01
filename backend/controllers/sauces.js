@@ -59,11 +59,11 @@ exports.getAllSauces = (req, res, next) => {
 exports.likeSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then(sauce => {
-      console.log(sauce)
       const likedSauce = likesManagement(sauce, req.body.userId, req.body.like);
       Sauce.updateOne(sauce, likedSauce)
-        .then(() => {res.status(200).json({ message: "Avis enregistré !" });
-        console.log(sauce)}
+        .then(sauce.save()
+          .then(() => res.status(200).json({ message: "Vote enregistré !" }))
+          .catch(error => res.status(400).json({ error }))
         )
         .catch(error => res.status(400).json({ error }))
     })
