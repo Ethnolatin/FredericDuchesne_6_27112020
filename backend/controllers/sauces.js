@@ -37,7 +37,7 @@ exports.deleteSauce = (req, res, next) => {
       const filename = sauce.imageUrl.split('/images/')[1];
       fs.unlink(`images/${filename}`, () => {
         Sauce.deleteOne({ _id: req.params.id })
-        .then(() => res.status(200).json({ message: "Objet supprimé !" }))
+        .then(() => res.status(200).json({ message: "Objet supprimé" }))
         .catch(error => res.status(400).json({ error }));
       });
     })
@@ -61,7 +61,7 @@ exports.likeSauce = (req, res, next) => {
     .then(sauce => {
       likesManagement(sauce, req.body.userId, req.body.like);
       sauce.save()
-        .then(() => res.status(200).json({ message: "Vote enregistré !" }))
+        .then(() => res.status(200).json({ message: "Vote enregistré" }))
         .catch(error => res.status(400).json({ error }))
     })    
     .catch(error => res.status(500).json({ error }));

@@ -2,11 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const password = require('./password');
 
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://ethnolatin:MJfBmfS8w2gykT4@cluster0.oylzo.mongodb.net/pekocko?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://ethnolatin:${password()}@cluster0.oylzo.mongodb.net/pekocko?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

@@ -1,3 +1,6 @@
+// utilisation du pluggin mongoose-unique-validator
+// pour s'assurer du caractère unique de l'adresse e-mail
+
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator')
 
