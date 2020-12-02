@@ -8,10 +8,10 @@ Le projet a été généré avec [Angular CLI](https://github.com/angular/angula
 
 Pour faire fonctionner le projet, vous devez installer node-sass à part.
 
-### Development server ###
+### Procédure ###
 
-Lancer `npm start` depuis le terminal du dossier `frontend`.
-
-Lancer `nodemon server` depuis le terminal du dossier `backend`.
-
-Rendez-vous sur `http://localhost:4200/`.
+1. Cloner le projet.
+2. Exécuter `npm install` depuis le terminal du dossier `frontend`.
+3. Exécuter `npm start`depuis le terminal du dossier `frontend`.
+4. Exécuter `node server` depuis le terminal du dossier `backend`.
+5. Rendez-vous sur `http://localhost:4200/`.

@@ -33,7 +33,8 @@ exports.login = (req, res, next) => {
           if (!valid) {
             return res.status(401).json({ error: "Mot de passe incorrect..." })
           }
-          // renvoie l'identifiant userID depuis la base de données et un jeton Web JSON signé (contenant également l'identifiant userID)
+          // renvoie l'identifiant userID depuis la base de données
+          // et un jeton Web JSON signé (contenant également l'identifiant userID)
           res.status(200).json({
             userId: user._id,
             token: jwt.sign(
