@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
+const token = require('../privateData/token');
 
 exports.signup = (req, res, next) => {
   // chiffre le mot de passe de l'utilisateur
@@ -11,7 +12,6 @@ exports.signup = (req, res, next) => {
         email: req.body.email,
         password: hash
       });
-      console.log(user);
       // ajoute l'utilisateur à la base de données
       user.save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé !'}))
@@ -39,7 +39,7 @@ exports.login = (req, res, next) => {
             userId: user._id,
             token: jwt.sign(
               { userId: user._id },
-              'RANDOM_TOKEN_SECRET',
+              `${token()}`,
               { expiresIn: '24h' }
             )
           });
