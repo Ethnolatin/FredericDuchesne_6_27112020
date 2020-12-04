@@ -1,4 +1,2 @@
-node_modules
-username.js
-password.js
-token.js
+node_modules/
+privateData/

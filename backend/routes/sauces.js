@@ -4,6 +4,9 @@ const saucesCtrl = require('../controllers/sauces');
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
+// applique les middlewares aux routes :
+// - renforce l'authentification sur les routes relatives aux sauces ('auth')
+// - accepte les téléchargements de fichier pour 'create' et 'modify' ('multer')
 router.post('/:id/like', auth, saucesCtrl.likeSauce);
 router.post('/', auth, multer, saucesCtrl.createSauce);
 router.put('/:id', auth, multer, saucesCtrl.modifySauce);
