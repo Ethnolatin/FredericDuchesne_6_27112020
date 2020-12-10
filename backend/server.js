@@ -4,7 +4,6 @@ const app = require('./app');
 // renvoie un port valide (3000 par défaut)
 const normalizePort = val => {
   const port = parseInt(val, 10);
-
   if (isNaN(port)) {
     return val;
   }
